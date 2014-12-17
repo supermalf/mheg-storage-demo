@@ -1,0 +1,337 @@
+// Used by: main.mheg+
+// Used by: ./scenes/tv_templates/tv.mheg+
+
+defMacro storageDemo {
+    insertMacro(variables)
+    insertMacro(assets)
+    insertMacro(links)
+} endMacro
+
+
+defMacro variables {
+    {:OStringVar tempStr  :Shared    True   :OrigValue "default" }
+        
+    {:OStringVar debugStr0  :OrigValue "default" }
+    {:OStringVar debugStr1  :OrigValue "default" }
+    {:OStringVar debugStr2  :OrigValue "default" }
+    {:OStringVar debugStr3  :OrigValue "default" }
+    
+    {:OStringVar defaultStr0 :OrigValue "Left to store, Right to retrieve, Select to clear" }
+    
+    {:OStringVar ramPathStr :OrigValue "ram://someram" }
+    {:OStringVar nvmPathStr :OrigValue "nvm://03E8/somenvm" }
+    {:OStringVar pstPathStr :OrigValue "pst://somepst" }
+    
+    {:OStringVar storeStr   :OrigValue "BBC-CRB-2014" }
+    {:OStringVar readRamStr :OrigValue "" }
+    {:OStringVar readNvmStr :OrigValue "" }
+    {:OStringVar readPstStr :OrigValue "" }
+    
+    {:BooleanVar readRamBool  :OrigValue  False}
+    {:BooleanVar readNvmBool  :OrigValue  False}
+    {:BooleanVar readPstBool  :OrigValue  False}
+    {:BooleanVar writeRamBool :OrigValue  False}
+    {:BooleanVar writeNvmBool :OrigValue  False}
+    {:BooleanVar writePstBool :OrigValue  False}
+} endMacro
+
+
+defMacro assets {
+    {:EntryField debugTitle0
+        :OrigContent        "Default"
+        :OrigBoxSize        400 45
+        :OrigPosition       100 300
+        :HJustification     centre
+        :VJustification     centre
+        :InputType          numeric
+        :TextColour         '=FF=FF=FF=00'
+        :BackgroundColour   '=00=00=00=FF'
+        :InitiallyActive    True
+    }
+    
+    {:Rectangle debugBox1
+        :OrigBoxSize        400 30
+        :OrigPosition       50 50
+        :OrigLineWidth      2
+        :OrigRefLineColour  '=FF=FF=FF=00'
+        :OrigRefFillColour  '=FF=00=7F=00'
+    }
+    
+    {:EntryField debugTitle1
+        :OrigContent        "Default Title"
+        :OrigBoxSize        400 45
+        :OrigPosition       50 50
+        :HJustification     start
+        :VJustification     start
+        :InputType          numeric
+        :TextColour         '=FF=FF=FF=00'
+        :BackgroundColour   '=00=00=00=FF'
+    }
+    {:Rectangle readBox1
+        :OrigBoxSize        30 30
+        :OrigPosition       500 50
+        :OrigLineWidth      2
+        :OrigRefLineColour  '=FF=FF=FF=00'
+        :OrigRefFillColour  '=AA=AA=AA=00'
+    }
+    {:EntryField readTitle1
+        :OrigContent        "R"
+        :OrigBoxSize        37 37
+        :OrigPosition       498 49
+        :HJustification     centre
+        :VJustification     centre
+        :InputType          numeric
+        :TextColour         '=FF=FF=FF=00'
+        :BackgroundColour   '=00=00=00=FF'
+    }
+    {:Rectangle writeBox1
+        :OrigBoxSize        30 30
+        :OrigPosition       460 50
+        :OrigLineWidth      2
+        :OrigRefLineColour  '=FF=FF=FF=00'
+        :OrigRefFillColour  '=AA=AA=AA=00'
+    }
+    {:EntryField writeTitle1
+        :OrigContent        "W"
+        :OrigBoxSize        37 37
+        :OrigPosition       457 49
+        :HJustification     centre
+        :VJustification     centre
+        :InputType          numeric
+        :TextColour         '=FF=FF=FF=00'
+        :BackgroundColour   '=00=00=00=FF'
+    }        
+    
+    {:Rectangle debugBox2
+        :OrigBoxSize        400 30
+        :OrigPosition       50 100
+        :OrigLineWidth      2
+        :OrigRefLineColour  '=FF=FF=FF=00'
+        :OrigRefFillColour  '=00=7F=FF=00' 
+    }
+    {:EntryField debugTitle2
+        :OrigContent        "Default Title"
+        :OrigBoxSize        400 45
+        :OrigPosition       50 100
+        :HJustification     start
+        :VJustification     start
+        :InputType          numeric
+        :TextColour         '=FF=FF=FF=00'
+        :BackgroundColour   '=00=00=00=FF'
+    }
+    {:Rectangle readBox2
+        :OrigBoxSize        30 30
+        :OrigPosition       500 100
+        :OrigLineWidth      2
+        :OrigRefLineColour  '=FF=FF=FF=00'
+        :OrigRefFillColour  '=AA=AA=AA=00'
+    }
+    {:EntryField readTitle2
+        :OrigContent        "R"
+        :OrigBoxSize        37 37
+        :OrigPosition       498 99
+        :HJustification     centre
+        :VJustification     centre
+        :InputType          numeric
+        :TextColour         '=FF=FF=FF=00'
+        :BackgroundColour   '=00=00=00=FF'
+    }
+            
+    {:Rectangle writeBox2
+        :OrigBoxSize        30 30
+        :OrigPosition       460 100
+        :OrigLineWidth      2
+        :OrigRefLineColour  '=FF=FF=FF=00'
+        :OrigRefFillColour  '=AA=AA=AA=00'
+    }
+    {:EntryField writeTitle2
+        :OrigContent        "W"
+        :OrigBoxSize        37 37
+        :OrigPosition       457 99
+        :HJustification     centre
+        :VJustification     centre
+        :InputType          numeric
+        :TextColour         '=FF=FF=FF=00'
+        :BackgroundColour   '=00=00=00=FF'
+    }  
+    
+    {:Rectangle debugBox3
+        :OrigBoxSize        400 30
+        :OrigPosition       50 150
+        :OrigLineWidth      2
+        :OrigRefLineColour  '=FF=FF=FF=00'
+        :OrigRefFillColour  '=00=7F=7F=00' 
+    }
+    {:EntryField debugTitle3
+        :OrigContent        "Default Title"
+        :OrigBoxSize        400 45
+        :OrigPosition       50 150
+        :HJustification     start
+        :VJustification     start
+        :InputType          numeric
+        :TextColour         '=FF=FF=FF=00'
+        :BackgroundColour   '=00=00=00=FF'
+    }   
+    {:Rectangle readBox3
+        :OrigBoxSize        30 30
+        :OrigPosition       500 150
+        :OrigLineWidth      2
+        :OrigRefLineColour  '=FF=FF=FF=00'
+        :OrigRefFillColour  '=AA=AA=AA=00'
+    }
+    {:EntryField readTitle3
+        :OrigContent        "R"
+        :OrigBoxSize        37 37
+        :OrigPosition       498 149
+        :HJustification     centre
+        :VJustification     centre
+        :InputType          numeric
+        :TextColour         '=FF=FF=FF=00'
+        :BackgroundColour   '=00=00=00=FF'
+    }
+            
+    {:Rectangle writeBox3
+        :OrigBoxSize        30 30
+        :OrigPosition       460 150
+        :OrigLineWidth      2
+        :OrigRefLineColour  '=FF=FF=FF=00'
+        :OrigRefFillColour  '=AA=AA=AA=00'
+    }
+    {:EntryField writeTitle3
+        :OrigContent        "W"
+        :OrigBoxSize        37 37
+        :OrigPosition       457 149
+        :HJustification     centre
+        :VJustification     centre
+        :InputType          numeric
+        :TextColour         '=FF=FF=FF=00'
+        :BackgroundColour   '=00=00=00=FF'
+    }  
+} endMacro
+
+defMacro links{
+
+    {:Link linkStartup
+        :EventSource        linkStartup
+        :EventType          IsRunning
+        :InitiallyActive    True
+        :LinkEffect (
+            debugTitle0.SetData(:IndirectRef defaultStr0)
+            
+            debugStr1.SetVariable(:IndirectRef ramPathStr)
+            debugStr1.Append(" --> ")
+            debugTitle1.SetData(:IndirectRef debugStr1)
+            
+            debugStr2.SetVariable(:IndirectRef nvmPathStr)
+            debugStr2.Append(" --> ")
+            debugTitle2.SetData(:IndirectRef debugStr2)
+            
+            debugStr3.SetVariable(:IndirectRef pstPathStr)
+            debugStr3.Append(" --> ")
+            debugTitle3.SetData(:IndirectRef debugStr3)
+         )
+    }
+
+    {:Link linkLeftPressed
+        :InitiallyActive   True
+        :EventSource       0
+        :EventType         UserInput
+        :EventData         3
+        :LinkEffect (
+            app#0.StorePersistent(writeRamBool (storeStr) :IndirectRef ramPathStr)
+            app#0.StorePersistent(writeNvmBool (storeStr) :IndirectRef nvmPathStr)
+            app#0.StorePersistent(writePstBool (storeStr) :IndirectRef pstPathStr)
+            
+            //Status boxes
+            :If(writeRamBool == true){writeBox1.SetFillColour('=00=FF=00=00')}
+            :Else{writeBox1.SetFillColour('=FF=00=00=00')}
+            
+            :If(writeNvmBool == true){writeBox2.SetFillColour('=00=FF=00=00')}
+            :Else{writeBox2.SetFillColour('=FF=00=00=00')}
+            
+            :If(writePstBool == true){writeBox3.SetFillColour('=00=FF=00=00')}
+            :Else{writeBox3.SetFillColour('=FF=00=00=00')}
+            
+            debugStr0.SetVariable("Value '")
+            debugStr0.Append(:IndirectRef storeStr)
+            debugStr0.Append("' stored!")
+            debugTitle0.SetData(:IndirectRef debugStr0)
+        )
+    }
+        
+    {:Link linkRightPressed
+        :InitiallyActive    True
+        :EventSource        0
+        :EventType          UserInput
+        :EventData          4
+        :LinkEffect (
+            tempStr.SetVariable("")
+            app#0.ReadPersistent(readRamBool (tempStr) :IndirectRef ramPathStr)
+            readRamStr.Append(:IndirectRef tempStr)
+            debugStr1.SetVariable(:IndirectRef ramPathStr)
+            debugStr1.Append(" --> ")
+            debugStr1.Append(:IndirectRef readRamStr)
+            debugTitle1.SetData(:IndirectRef debugStr1)
+            
+            tempStr.SetVariable("")
+            app#0.ReadPersistent(readNvmBool (tempStr) :IndirectRef nvmPathStr)
+            readNvmStr.Append(:IndirectRef tempStr)
+            debugStr2.SetVariable(:IndirectRef nvmPathStr)
+            debugStr2.Append(" --> ")
+            debugStr2.Append(:IndirectRef readNvmStr)
+            debugTitle2.SetData(:IndirectRef debugStr2)
+
+            tempStr.SetVariable("")
+            app#0.ReadPersistent(readPstBool (tempStr) :IndirectRef pstPathStr)
+            readPstStr.Append(:IndirectRef tempStr)
+            debugStr3.SetVariable(:IndirectRef pstPathStr)
+            debugStr3.Append(" --> ")
+            debugStr3.Append(:IndirectRef readPstStr)
+            debugTitle3.SetData(:IndirectRef debugStr3)
+            
+            //Status boxes
+            :If(readRamBool == true){readBox1.SetFillColour('=00=FF=00=00')}
+            :Else{readBox1.SetFillColour('=FF=00=00=00')}
+            
+            :If(readNvmBool == true){readBox2.SetFillColour('=00=FF=00=00')}
+            :Else{readBox2.SetFillColour('=FF=00=00=00')}
+            
+            :If(readPstBool == true){readBox3.SetFillColour('=00=FF=00=00')}
+            :Else{readBox3.SetFillColour('=FF=00=00=00')}
+              
+            debugTitle0.SetData("Values retrieved!")
+        )
+    } 
+        
+    {:Link linkSelectPressed
+        :EventSource    0
+        :EventType      UserInput
+        :EventData      15
+        :LinkEffect (
+            readRamStr.SetVariable("")
+            readNvmStr.SetVariable("")
+            readPstStr.SetVariable("")
+            
+            debugTitle0.SetData(:IndirectRef defaultStr0)
+            
+            debugStr1.SetVariable(:IndirectRef ramPathStr)
+            debugStr1.Append(" --> ")
+            debugTitle1.SetData(:IndirectRef debugStr1)
+            
+            debugStr2.SetVariable(:IndirectRef nvmPathStr)
+            debugStr2.Append(" --> ")
+            debugTitle2.SetData(:IndirectRef debugStr2)
+            
+            debugStr3.SetVariable(:IndirectRef pstPathStr)
+            debugStr3.Append(" --> ")
+            debugTitle3.SetData(:IndirectRef debugStr3)            
+            
+            writeBox1.SetFillColour('=AA=AA=AA=00')
+            writeBox2.SetFillColour('=AA=AA=AA=00')
+            writeBox3.SetFillColour('=AA=AA=AA=00')
+            readBox1.SetFillColour('=AA=AA=AA=00')
+            readBox2.SetFillColour('=AA=AA=AA=00')
+            readBox3.SetFillColour('=AA=AA=AA=00')
+         )
+    } 
+} endMacro

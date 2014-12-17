@@ -1,0 +1,16 @@
+{:Application("/a" 0)
+	:Items (
+		{:Link linkApplicationStart
+			:EventSource 0
+			:EventType IsRunning
+			:LinkEffect (
+				:TransitionTo (("/main.mheg+" 0))
+			)
+		}
+	)
+	:TextCHook 10
+	:TextColour			'=FF=FF=FF=00'
+	:BackgroundColour 	'=00=00=00=00'
+	:Font				"rec://font/uk1"
+	:FontAttributes		"plain.24.27.0"
+}
