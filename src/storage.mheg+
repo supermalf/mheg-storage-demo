@@ -1,5 +1,4 @@
 // Used by: main.mheg+
-// Used by: ./scenes/tv_templates/tv.mheg+
 
 defMacro storageDemo {
     insertMacro(variables)
