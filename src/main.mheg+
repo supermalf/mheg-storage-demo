@@ -1,0 +1,10 @@
+{:Scene("/main.mheg+" 0)
+    import(storage.mheg+)
+
+    :Items (
+        insertMacro(storageDemo)
+    )
+    
+    :InputEventReg 4
+    :SceneCS 720 576
+}

@@ -323,7 +323,7 @@ defMacro links{
             
             debugStr3.SetVariable(:IndirectRef pstPathStr)
             debugStr3.Append(" --> ")
-            debugTitle3.SetData(:IndirectRef debugStr3)            
+            debugTitle3.SetData(:IndirectRef debugStr3)
             
             writeBox1.SetFillColour('=AA=AA=AA=00')
             writeBox2.SetFillColour('=AA=AA=AA=00')
